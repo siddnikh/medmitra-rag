@@ -1,5 +1,4 @@
 export interface Source {
-  id: string;
   title: string;
   author?: string;
   link: string;
