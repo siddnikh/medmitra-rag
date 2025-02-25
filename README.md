@@ -191,4 +191,4 @@ endLine: 90
 
 ---
 
-Will add the whimsical link for System Design here, shortly.
+[View System Design on Whimsical 🚀](https://whimsical.com/medmitra-assessment-tmeKytM9a9vsijeT6Qe8j)
