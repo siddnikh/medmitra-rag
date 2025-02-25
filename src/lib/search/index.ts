@@ -61,11 +61,18 @@ export class SearchService {
 
       // Generate embeddings for web content
       const validWebContents = webContents.filter(Boolean);
-      const webEmbeddings = await this.embeddings.embedDocuments(
-        validWebContents.map((content) => content!.content)
-      );
+      const webEmbeddings =
+        validWebContents.length > 0
+          ? await this.embeddings.embedDocuments(
+              validWebContents.map((content) => {
+                // Ensure content is not too long (OpenAI has an 8k token limit for embeddings)
+                const truncatedContent = content?.content?.slice(0, 8000) ?? "";
+                return truncatedContent;
+              })
+            )
+          : [];
 
-      // Calculate similarity scores for web content
+      // Only proceed with similarity calculation if we have embeddings
       const queryEmbedding = await this.embeddings.embedQuery(query);
       const webScores = webEmbeddings.map((embedding) =>
         cosineSimilarity(queryEmbedding, embedding)
@@ -106,7 +113,7 @@ export class SearchService {
 
       // Generate response using GPT
       const completion = await this.openai.chat.completions.create({
-        model: "gpt-3.5-turbo-16k",
+        model: "gpt-4o-mini",
         messages: [
           {
             role: "system",
@@ -158,7 +165,7 @@ export class SearchService {
     context: string
   ): Promise<string[]> {
     const completion = await this.openai.chat.completions.create({
-      model: "gpt-3.5-turbo-16k",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
