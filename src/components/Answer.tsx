@@ -9,9 +9,9 @@ interface AnswerProps {
 
 export function Answer({ answer, isTyping }: AnswerProps) {
   return (
-    <div className="flex w-full gap-8 font-body">
-      {/* Main chat content - 2/3 width */}
-      <div className="flex-grow-[2] bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+    <div className="flex flex-col lg:flex-row w-full gap-8 font-body">
+      {/* Main chat content - max 2/3 width */}
+      <div className="lg:max-w-[66%] w-full bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm border border-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
         {isTyping ? (
           <div className="flex gap-2 items-center">
             <div className="typing-dot"></div>
@@ -34,8 +34,8 @@ export function Answer({ answer, isTyping }: AnswerProps) {
         )}
       </div>
 
-      {/* Sources sidebar - 1/3 width */}
-      <div className="flex-grow-1 w-1/3">
+      {/* Sources sidebar - min 1/3 width */}
+      <div className="w-full lg:min-w-[33.333%] lg:w-[33.333%]">
         {answer.sources.length > 0 && (
           <div className="bg-gray-800/30 rounded-xl p-6 backdrop-blur-sm border border-blue-500/10">
             <h3 className="text-lg font-heading font-semibold mb-4 text-blue-400">
@@ -43,7 +43,7 @@ export function Answer({ answer, isTyping }: AnswerProps) {
             </h3>
             <ul className="space-y-3">
               {answer.sources.map((source) => (
-                <li key={source.id} className="group">
+                <li key={source.link} className="group">
                   <a
                     href={source.link}
                     target="_blank"
