@@ -2,11 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import type { Answer } from "@/types";
 import { SearchService } from "@/lib/search";
 import { VectorStore } from "@/lib/vectorstore";
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 const vectorStore = new VectorStore();
 let searchService: SearchService;
@@ -14,7 +9,7 @@ let searchService: SearchService;
 // Initialize services
 const initializeServices = async () => {
   await vectorStore.initialize();
-  searchService = new SearchService(vectorStore, openai);
+  searchService = new SearchService(vectorStore);
 };
 
 // Initialize on first load

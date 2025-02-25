@@ -19,13 +19,17 @@ interface SearchOptions {
 export class SearchService {
   private embeddings: OpenAIEmbeddings;
   private webSearch: WebSearchService;
+  private openai: OpenAI;
 
-  constructor(private vectorStore: VectorStore, private openai: OpenAI) {
+  constructor(private vectorStore: VectorStore) {
     this.embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
       modelName: "text-embedding-3-large",
     });
     this.webSearch = new WebSearchService();
+    this.openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
   }
 
   async search(query: string, options: SearchOptions = {}): Promise<Answer> {
