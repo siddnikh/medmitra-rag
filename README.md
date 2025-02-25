@@ -180,6 +180,15 @@ endLine: 90
 - Secure API key management
 - Input sanitization (not a lot but yes)
 
+## ⚠️ Possible Improvements
+
+- Make the API calls shorter/faster. This does not seem scalable
+- Cache user queries, search results, and answers
+- Better display of database sourced data
+- Add a way to show images from relevant sources
+- Add a way to show PDF documents
+- Better on-the-fly embedding generation for web content
+
 ---
 
 Will add the whimsical link for System Design here, shortly.
