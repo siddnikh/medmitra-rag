@@ -1,3 +1,5 @@
+import { Document } from "@langchain/core/documents";
+
 export interface DocumentMetadata {
   title: string;
   author?: string;
@@ -8,7 +10,7 @@ export interface DocumentMetadata {
 }
 
 export interface ProcessedDocument {
-  chunks: Document<DocumentMetadata>[];
+  chunks: Document[];
   embeddings: number[][];
   metadata: DocumentMetadata;
 }
