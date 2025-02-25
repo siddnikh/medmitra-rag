@@ -10,6 +10,7 @@ export default {
         foreground: "var(--foreground)",
       },
       animation: {
+        bounce: "bounce 1s infinite",
         blink: "blink 1.4s infinite",
         slideUp: "slideUp 0.3s ease-out forwards",
         fadeIn: "fadeIn 0.5s ease-out forwards",
