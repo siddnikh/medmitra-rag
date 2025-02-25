@@ -1,40 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# MedMitra - AI-Powered Medical Knowledge Assistant
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![MedMitra Logo](assets/logo.png) <!-- You'll need to add this -->
+
+A sophisticated medical knowledge retrieval and Q&A system powered by RAG (Retrieval Augmented Generation) architecture.
+
+[![Next.js](https://img.shields.io/badge/Next.js-13-black)](https://nextjs.org/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-blue)](https://openai.com/)
+[![Pinecone](https://img.shields.io/badge/Pinecone-Vector%20DB-purple)](https://www.pinecone.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+
+</div>
+
+## 🌟 Features
+
+- **Advanced RAG Architecture**: Combines vector search with real-time web retrieval
+- **Medical Knowledge Processing**: Specialized text chunking and preprocessing for medical content
+- **Hybrid Search**: Integrates database knowledge with fresh web content
+- **Interactive UI**: Clean, responsive interface with real-time updates
+- **Follow-up Questions**: AI-generated relevant follow-up suggestions
+- **Source Attribution**: Transparent citation of all information sources
+- **Medical Disclaimers**: Appropriate medical advice disclaimers
+
+## 🏗️ System Architecture
+
+### Core Components
+
+1. **RAG Pipeline**
+
+   - Custom text chunking optimized for medical content
+   - Advanced embedding generation using OpenAI
+   - Metadata preservation and management
+
+2. **Vector Store**
+
+   - Pinecone integration for efficient similarity search
+   - Optimized batch processing
+   - Metadata-enriched vector storage
+
+3. **Search Service**
+
+   - Hybrid search combining vector similarity and web results
+   - Real-time content fetching and processing
+   - Source ranking and relevance scoring
+
+4. **Web Interface**
+   - Real-time chat interface
+   - Markdown rendering for formatted responses
+   - Source attribution display
+   - Follow-up question suggestions
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ or Bun
+- OpenAI API key
+- Pinecone API key
+- Google Custom Search API key (optional, for web search)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/yourusername/medmitra.git
+
+# Install dependencies
+bun install
+
+# Set up environment variables
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Configure your `.env` file:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```env
+OPENAI_API_KEY=your_openai_key
+PINECONE_API_KEY=your_pinecone_key
+PINECONE_INDEX_NAME=your_index_name
+GOOGLE_SEARCH_API_KEY=your_google_key
+GOOGLE_SEARCH_CX=your_search_cx
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Running the Application
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```bash
+# Development
+bun dev
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Production build
+bun build
+bun start
+```
 
-## Learn More
+## 🧠 Prompt Engineering
 
-To learn more about Next.js, take a look at the following resources:
+### System Prompts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+1. **Medical Answer Generation**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```typescript:src/lib/search/index.ts
+startLine: 108
+endLine: 115
+```
 
-## Deploy on Vercel
+2. **Follow-up Questions Generation**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```typescript:src/lib/search/index.ts
+startLine: 160
+endLine: 165
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### Prompt Design Principles
+
+- Medical context preservation
+- Source citation requirements
+- Conflict acknowledgment
+- Educational focus
+- Disclaimer inclusion
+
+## 📊 Data Processing
+
+### Text Chunking Strategy
+
+```typescript:src/lib/rag/pipeline.ts
+startLine: 18
+endLine: 22
+```
+
+### Medical Text Preprocessing
+
+```typescript:src/lib/rag/pipeline.ts
+startLine: 88
+endLine: 98
+```
+
+## 🔍 Search Implementation
+
+### Hybrid Search Approach
+
+```typescript:src/lib/search/index.ts
+startLine: 31
+endLine: 90
+```
+
+## 🛠️ Technical Details
+
+- **Vector Dimensions**: 3072 (OpenAI text-embedding-3-large)
+- **Chunk Size**: 300 tokens with 100 token overlap
+- **Batch Processing**: 100 vectors per upsert
+- **Rate Limiting**: Implemented for API calls
+- **Error Handling**: Graceful exit with fallbacks
+
+## 📈 Performance Optimization
+
+- Batch processing for vector operations
+- Content size limits for API compliance
+- Efficient metadata management
+- Response caching capabilities
+
+## 🔐 Security Considerations
+
+- PHI (Protected Health Information) removal
+- Medical record number redaction
+- Secure API key management
+- Input sanitization (not a lot but yes)
+
+---
