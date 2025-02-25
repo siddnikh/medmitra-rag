@@ -64,7 +64,7 @@ A sophisticated medical knowledge retrieval and Q&A system powered by RAG (Retri
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/medmitra.git
+git clone https://github.com/siddnikh/medmitra-submission.git
 
 # Install dependencies
 bun install
@@ -121,6 +121,21 @@ endLine: 165
 - Disclaimer inclusion
 
 ## 📊 Data Processing
+
+### PubMed Data Fetching
+
+The project includes a script to fetch and process medical research papers from PubMed Central:
+
+```bash
+# Fetch and process papers from PubMed
+bun run scripts/fetch-pubmed.ts
+```
+
+This script:
+
+- Fetches recent medical research papers from PubMed Central
+- Processes and ingests them into the vector store
+- Adds metadata for source tracking and categorization
 
 ### Text Chunking Strategy
 
