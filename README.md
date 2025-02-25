@@ -2,8 +2,6 @@
 
 <div align="center">
 
-![MedMitra Logo](assets/logo.png) <!-- You'll need to add this -->
-
 A sophisticated medical knowledge retrieval and Q&A system powered by RAG (Retrieval Augmented Generation) architecture.
 
 [![Next.js](https://img.shields.io/badge/Next.js-13-black)](https://nextjs.org/)

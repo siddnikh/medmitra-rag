@@ -102,7 +102,7 @@ export class SearchService {
 
       // Generate response using GPT
       const completion = await this.openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-4o-mini",
         messages: [
           {
             role: "system",
@@ -154,7 +154,7 @@ export class SearchService {
     context: string
   ): Promise<string[]> {
     const completion = await this.openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
